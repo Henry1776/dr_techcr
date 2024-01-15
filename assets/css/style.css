@@ -1,0 +1,25 @@
+/* CSS Document */
+
+/* Carousel */
+
+#dr_tech_carrusel { background: #efefef !important;}
+
+/* Carousel Hero */
+#dr_tech_carrusel .carousel-indicators li {
+  margin-top: -50px;
+  background-color: #2237B3;
+}
+#dr_tech_carrusel .carousel-control-next i,
+#dr_tech_carrusel .carousel-control-prev i {
+  color: #2237B3 !important;
+  font-size: 2.8em !important;
+}
+/* Carousel Brand */
+.tempaltemo-carousel .h1 {
+  font-size: .5em !important;
+  color: #000 !important;
+}
+
+/* Cards */
+
+#cards { background: #efefef;}
