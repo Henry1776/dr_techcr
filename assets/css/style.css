@@ -1,25 +1,292 @@
-/* CSS Document */
+/* CSS Document - Premium Design for Dr Tech */
+
+:root {
+  /* Color Palette */
+  --drtech-blue: #2237B3;
+  --drtech-blue-hover: #1b2c8f;
+  --drtech-dark: #121212;
+  --drtech-dark-card: #1e1e1e;
+  --drtech-accent: #00d2ff;
+  --text-light: #ffffff;
+  --text-muted: #d0d0d0;
+  --glass-bg: rgba(34, 55, 179, 0.85); /* Navbar glass */
+  --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+  --btn-gradient: linear-gradient(90deg, #2237B3 0%, #00d2ff 100%);
+}
+
+/* Typography base */
+body {
+  font-family: 'Outfit', 'Open Sans', sans-serif;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--drtech-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--drtech-blue);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--drtech-accent);
+}
+
+/* Top Nav & Header */
+.navbar {
+  transition: all 0.3s ease-in-out;
+}
+.bg-dark {
+  background-color: var(--drtech-dark) !important;
+}
+
+#top-nav {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.bg-body-tertiary {
+  background: rgba(255, 255, 255, 0.98) !important;
+  color: #555555;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.text-body-emphasis {
+  color: #222222 !important;
+}
+
+.nav-link {
+  color: #333333 !important;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--drtech-accent) !important;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--drtech-accent);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+/* Buttons */
+.btn-primary, .btn-dark, .btn {
+  border: none;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background: var(--btn-gradient) !important;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(34, 55, 179, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 210, 255, 0.5);
+}
 
 /* Carousel */
-
-#dr_tech_carrusel { background: #efefef !important;}
-
-/* Carousel Hero */
-#dr_tech_carrusel .carousel-indicators li {
-  margin-top: -50px;
-  background-color: #2237B3;
+#dr_tech_carrusel { 
+  background: #f4f4f4 !important;
+  position: relative;
 }
-#dr_tech_carrusel .carousel-control-next i,
-#dr_tech_carrusel .carousel-control-prev i {
-  color: #2237B3 !important;
+
+.carousel-item {
+  min-height: 500px;
+}
+
+.carousel-item .h1 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 3rem;
+  background: var(--btn-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.carousel-item .h2 {
+  font-weight: 600;
+  color: var(--drtech-dark);
+  margin-bottom: 1rem;
+}
+
+.carousel-indicators li {
+  background-color: var(--drtech-blue);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+.carousel-indicators li.active {
+  background-color: var(--drtech-accent);
+  transform: scale(1.2);
+}
+
+.carousel-control-next i,
+.carousel-control-prev i {
+  color: var(--drtech-accent) !important;
   font-size: 2.8em !important;
-}
-/* Carousel Brand */
-.tempaltemo-carousel .h1 {
-  font-size: .5em !important;
-  color: #000 !important;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+  transition: transform 0.3s ease;
 }
 
-/* Cards */
+.carousel-control-next:hover i { transform: scale(1.1); }
+.carousel-control-prev:hover i { transform: scale(1.1); }
 
-#cards { background: #efefef;}
+/* Images */
+img {
+  border-radius: 8px;
+}
+img.img-fluid {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s ease;
+}
+img.img-fluid:hover {
+  transform: scale(1.02);
+}
+
+/* Cards Section */
+#works { 
+  background: transparent;
+}
+.trabajos h2 {
+  color: var(--text-light);
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 3rem;
+}
+
+.card {
+  background: rgba(30, 30, 30, 0.6) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 210, 255, 0.2);
+  border-color: rgba(0, 210, 255, 0.3);
+}
+
+.card-body {
+  color: var(--text-light);
+}
+
+.card-title {
+  color: var(--drtech-accent);
+  font-weight: 700;
+}
+
+.card-text {
+  color: var(--text-muted);
+}
+
+.card-img-top {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  object-fit: contain;
+  height: 250px;
+  background: rgba(0,0,0,0.2);
+  transition: transform 0.4s ease;
+}
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Footer Element */
+footer, #tempaltemo_footer {
+  background: #ffffff !important;
+  color: #333333 !important;
+  border-top: 1px solid #eeeeee;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
+  margin: 0 !important;
+}
+
+footer *, #tempaltemo_footer * {
+  color: #333333;
+}
+
+footer .h2, footer h2 {
+  color: #222222 !important;
+  border-bottom: 1px solid #eeeeee !important;
+}
+
+footer .footer-link-list li,
+footer .footer-link-list li a {
+  color: #555555 !important;
+}
+
+footer .footer-link-list li i {
+  color: var(--drtech-blue) !important;
+}
+
+.footer-link-list li a {
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 0;
+}
+.footer-link-list li a:hover {
+  color: var(--drtech-accent) !important;
+  padding-left: 8px;
+}
+
+.footer-icons li {
+  transition: all 0.3s ease;
+  background: transparent;
+  border: 1px solid #dddddd !important;
+  cursor: pointer;
+}
+.footer-icons li a {
+  color: #555555 !important;
+}
+.footer-icons li:hover {
+  background: var(--btn-gradient) !important;
+  border-color: transparent !important;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 210, 255, 0.4);
+}
+.footer-icons li:hover a {
+  color: #ffffff !important;
+}
+
+.h2.logo {
+  background: var(--btn-gradient);
+  -webkit-background-clip: text;
+  background-clip: text; /* Added for compatibility */
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
