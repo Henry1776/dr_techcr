@@ -82,19 +82,21 @@
         } else {
             carrito.forEach((item, index) => {
                 const itemHtml = `
-                    <div class="carrito-item" data-index="${index}">
-                        <img src="${sanitizeInput(item.imagen)}" alt="${sanitizeInput(item.nombre)}">
-                        <div class="carrito-item-info">
-                            <div class="carrito-item-nombre">${sanitizeInput(item.nombre)}</div>
+                    <div class="carrito-item d-flex justify-content-between align-items-center" data-index="${index}">
+                        <div class="carrito-item-info w-100">
+                            <div class="carrito-item-nombre d-flex align-items-center">
+                                <img src="${sanitizeInput(item.imagen)}" alt="${sanitizeInput(item.nombre)}" style="width: 50px; height: 50px; object-fit: contain; margin-right: 15px; border-radius: 8px; background-color: rgba(255,255,255,0.05); padding: 5px;">
+                                <span>${sanitizeInput(item.nombre)}</span>
+                            </div>
                             <div class="carrito-item-precio">₡${item.precio.toLocaleString()}</div>
                             <div class="cantidad-controls">
                                 <button class="cantidad-btn decrementar" data-index="${index}">-</button>
-                                <input type="number" class="cantidad-input" value="${item.cantidad}" min="1" max="10" data-index="${index}">
+                                <input type="number" class="cantidad-input text-center" value="${item.cantidad}" min="1" max="10" data-index="${index}" style="width: 50px;">
                                 <button class="cantidad-btn incrementar" data-index="${index}">+</button>
                             </div>
                             <div class="subtotal-item">Subtotal: ₡${(item.precio * item.cantidad).toLocaleString()}</div>
                         </div>
-                        <button class="eliminar-item" data-index="${index}">
+                        <button class="eliminar-item btn btn-outline-danger btn-sm ms-3" data-index="${index}">
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
