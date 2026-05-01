@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+  
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <!-- Fuentes de google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+  
+  
+  <!-- Bootstrap CSS -->
+  
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	
+	
+
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/style.css">
+    
+    <title>PRODUCTOS - DR TECH</title>
+</head>
+
+
+<body>
+	<!-- Start Top Nav -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-envelope mx-2"></i>
+                    <a class="btn btn-dark text-light text-decoration-none" NAME="Boton1" VALUE="Abrir" onClick="window.open('assets/form/form.html', 'Form', 
+                    'top=100, left=400, width=600, height=600, location=no, status=yes, ' +
+                    'toolbar=no, menubar=no, scrollbars=no, resizable=no')">info@drtech.com</a>
+                    <i class="fa fa-phone mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:+506 8888 8888">8888-8888</a>
+                </div>
+                <div>
+                    <a class="text-light" href="#" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Close Top Nav -->
+	
+	
+<!-- Header -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+	  <a class="" href="index.html"><img src="assets/img/dr_tech_logo.svg" alt="DR TECH Logo"  height= "40"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+		<a class="nav-link" aria-current="page" href="index.html">Inicio</a>
+        <a class="nav-link" aria-current="page" href="nosotros.html">Nosotros</a>
+        <a class="nav-link active" href="productos.html">Productos</a>
+        <a class="nav-link" href="servicios.html">Servicios</a>
+        <a class="nav-link" href="garantias-devoluciones.html">Garantías</a>
+        <a class="nav-link" aria-current="page" href="contacto.html">Contacto</a>
+        <button class="btn btn-outline-primary ms-2" data-bs-toggle="modal" data-bs-target="#carritoModal">
+          <i class="fas fa-shopping-cart"></i> Carrito (<span id="carrito-count">0</span>)
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Close Header -->
+	
+    <!-- Carrito de Compras Modal -->
+    <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="carrito-items"></div>
+                    <div class="carrito-resumen mt-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Subtotal: ₡<span id="subtotal">0</span></h6>
+                                <h6>IVA (13%): ₡<span id="iva">0</span></h6>
+                                <h6>Costo de Envío: ₡<span id="envio">2500</span></h6>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><strong>Total: ₡<span id="total">0</span></strong></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuar Comprando</button>
+                    <button type="button" class="btn btn-primary" id="proceder-checkout">Proceder al Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner de Productos -->
+    <section class="bg-primary py-5">
+        <div class="container">
+            <div class="row align-items-center py-5">
+                <div class="col-md-8 text-white">
+                    <h1>Catálogo de Productos DR TECH</h1>
+                    <p class="lead">
+                        Descubre nuestra amplia gama de productos tecnológicos de alta calidad.
+                        Todos nuestros productos incluyen garantía y soporte técnico especializado.
+                    </p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <img src="assets/img/dr_tech_logo.svg" alt="DR TECH Logo" height="120" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Completos -->
+    <section class="container text-center" id="products"> 
+        <div class="productos">
+            <h2 class="display-3 font-weight-bold p-5 my-5 text-white">PRODUCTOS DISPONIBLES</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+                
+                <!-- Producto 1: Audífonos -->
+                <div class="col">
+                    <div class="card h-100 w-100 producto-card" data-producto-id="1">
+                        <img class="card-img-top" src="assets/img/audifonos.png" alt="Audífonos Bluetooth"/>
+                        <div class="card-body">
+                            <h5 class="card-title">Audífonos Bluetooth Premium</h5>
+                            <p class="card-text">
+                                Audífonos inalámbricos con cancelación de ruido activa y batería de larga duración hasta 30 horas.
+                                Compatible con todos los dispositivos Bluetooth.
+                            </p>
+                            <div class="caracteristicas mb-3">
+                                <span class="badge bg-info me-1">Bluetooth 5.0</span>
+                                <span class="badge bg-success me-1">30h Batería</span>
+                                <span class="badge bg-warning">Cancelación Ruido</span>
+                            </div>
+                            <div class="precio-container">
+                                <h4 class="precio">₡45,000</h4>
+                                <p class="precio-sin-iva">Precio sin IVA: ₡39,823</p>
+                            </div>
+                            <button class="btn btn-primary agregar-carrito" 
+                                    data-id="1" 
+                                    data-nombre="Audífonos Bluetooth Premium" 
+                                    data-precio="45000"
+                                    data-imagen="assets/img/audifonos.png">
+                                <i class="fas fa-cart-plus me-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 2: Smartphone -->
+                <div class="col">
+                    <div class="card h-100 w-100 producto-card" data-producto-id="2">
+                        <img class="card-img-top" src="assets/img/celular.png" alt="Smartphone" />
+                        <div class="card-body">
+                            <h5 class="card-title">Smartphone Android 128GB</h5>
+                            <p class="card-text">
+                                Teléfono inteligente con cámara de alta resolución, procesador de última generación y 
+                                pantalla AMOLED de 6.5 pulgadas.
+                            </p>
+                            <div class="caracteristicas mb-3">
+                                <span class="badge bg-primary me-1">128GB</span>
+                                <span class="badge bg-success me-1">6GB RAM</span>
+                                <span class="badge bg-info">48MP Cámara</span>
+                            </div>
+                            <div class="precio-container">
+                                <h4 class="precio">₡280,000</h4>
+                                <p class="precio-sin-iva">Precio sin IVA: ₡247,787</p>
+                            </div>
+                            <button class="btn btn-primary agregar-carrito" 
+                                    data-id="2" 
+                                    data-nombre="Smartphone Android 128GB" 
+                                    data-precio="280000"
+                                    data-imagen="assets/img/celular.png">
+                                <i class="fas fa-cart-plus me-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 3: Laptop -->
+                <div class="col">
+                    <div class="card h-100 w-100 producto-card" data-producto-id="3">
+                        <img class="card-img-top" src="assets/img/laptop.png" alt="Laptop Gaming" />
+                        <div class="card-body">
+                            <h5 class="card-title">Laptop Gaming 16GB RAM</h5>
+                            <p class="card-text">
+                                Computadora portátil para gaming con tarjeta gráfica dedicada, SSD de alta velocidad y 
+                                pantalla de 15.6" Full HD.
+                            </p>
+                            <div class="caracteristicas mb-3">
+                                <span class="badge bg-danger me-1">Gaming</span>
+                                <span class="badge bg-primary me-1">16GB RAM</span>
+                                <span class="badge bg-success">SSD 512GB</span>
+                            </div>
+                            <div class="precio-container">
+                                <h4 class="precio">₡850,000</h4>
+                                <p class="precio-sin-iva">Precio sin IVA: ₡752,212</p>
+                            </div>
+                            <button class="btn btn-primary agregar-carrito" 
+                                    data-id="3" 
+                                    data-nombre="Laptop Gaming 16GB RAM" 
+                                    data-precio="850000"
+                                    data-imagen="assets/img/laptop.png">
+                                <i class="fas fa-cart-plus me-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 4: Cargador -->
+                <div class="col">
+                    <div class="card h-100 w-100 producto-card" data-producto-id="4">
+                        <img class="card-img-top" src="assets/img/cargador.png" alt="Cargador Rápido" />
+                        <div class="card-body">
+                            <h5 class="card-title">Cargador Rápido USB-C</h5>
+                            <p class="card-text">
+                                Cargador de pared con tecnología de carga rápida 65W, compatible con múltiples dispositivos 
+                                y certificación de seguridad.
+                            </p>
+                            <div class="caracteristicas mb-3">
+                                <span class="badge bg-warning me-1">65W</span>
+                                <span class="badge bg-success me-1">USB-C</span>
+                                <span class="badge bg-info">Carga Rápida</span>
+                            </div>
+                            <div class="precio-container">
+                                <h4 class="precio">₡15,000</h4>
+                                <p class="precio-sin-iva">Precio sin IVA: ₡13,274</p>
+                            </div>
+                            <button class="btn btn-primary agregar-carrito" 
+                                    data-id="4" 
+                                    data-nombre="Cargador Rápido USB-C" 
+                                    data-precio="15000"
+                                    data-imagen="assets/img/cargador.png">
+                                <i class="fas fa-cart-plus me-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 5: Teclado -->
+                <div class="col">
+                    <div class="card h-100 w-100 producto-card" data-producto-id="5">
+                        <img class="card-img-top" src="assets/img/teclado.png" alt="Teclado Mecánico" />
+                        <div class="card-body">
+                            <h5 class="card-title">Teclado Mecánico RGB</h5>
+                            <p class="card-text">
+                                Teclado mecánico para gaming con retroiluminación RGB personalizable, switches de alta calidad 
+                                y diseño ergonómico.
+                            </p>
+                            <div class="caracteristicas mb-3">
+                                <span class="badge bg-danger me-1">Gaming</span>
+                                <span class="badge bg-primary me-1">RGB</span>
+                                <span class="badge bg-success">Mecánico</span>
+                            </div>
+                            <div class="precio-container">
+                                <h4 class="precio">₡65,000</h4>
+                                <p class="precio-sin-iva">Precio sin IVA: ₡57,522</p>
+                            </div>
+                            <button class="btn btn-primary agregar-carrito" 
+                                    data-id="5" 
+                                    data-nombre="Teclado Mecánico RGB" 
+                                    data-precio="65000"
+                                    data-imagen="assets/img/teclado.png">
+                                <i class="fas fa-cart-plus me-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 6: Webcam -->
+                <div class="col">
+                    <div class="card h-100 w-100 producto-card" data-producto-id="6">
+                        <img class="card-img-top" src="assets/img/webcam.png" alt="Webcam HD" />
+                        <div class="card-body">
+                            <h5 class="card-title">Webcam Full HD 1080p</h5>
+                            <p class="card-text">
+                                Cámara web de alta definición con micrófono integrado y enfoque automático, 
+                                ideal para videollamadas y streaming.
+                            </p>
+                            <div class="caracteristicas mb-3">
+                                <span class="badge bg-primary me-1">1080p</span>
+                                <span class="badge bg-success me-1">Micrófono</span>
+                                <span class="badge bg-info">Autofocus</span>
+                            </div>
+                            <div class="precio-container">
+                                <h4 class="precio">₡35,000</h4>
+                                <p class="precio-sin-iva">Precio sin IVA: ₡30,973</p>
+                            </div>
+                            <button class="btn btn-primary agregar-carrito" 
+                                    data-id="6" 
+                                    data-nombre="Webcam Full HD 1080p" 
+                                    data-precio="35000"
+                                    data-imagen="assets/img/webcam.png">
+                                <i class="fas fa-cart-plus me-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Información Adicional -->
+    <section class="container py-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card border-primary">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h3><i class="fas fa-info-circle me-2"></i>Información Importante</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-3 mb-3">
+                                <i class="fas fa-shipping-fast fa-3x text-primary mb-3"></i>
+                                <h5>Envío Gratis</h5>
+                                <p class="text-muted">En compras mayores a ₡50,000</p>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <i class="fas fa-shield-alt fa-3x text-success mb-3"></i>
+                                <h5>Garantía Incluida</h5>
+                                <p class="text-muted">Todos los productos con garantía oficial</p>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <i class="fas fa-credit-card fa-3x text-warning mb-3"></i>
+                                <h5>Pago Seguro</h5>
+                                <p class="text-muted">Tarjetas de crédito y SINPE Móvil</p>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <i class="fas fa-headset fa-3x text-info mb-3"></i>
+                                <h5>Soporte 24/7</h5>
+                                <p class="text-muted">Atención al cliente especializada</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+	<!-- Open footer -->
+	
+	<footer class=" container-fluid p-5" id="tempaltemo_footer"> 
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-4 pt-5">
+          <h2 class="h2 border-bottom pb-3 border-light logo">DR TECH</h2>
+          <ul class="list-unstyled footer-link-list">
+            <li>
+              <i class="fas fa-map-marker-alt fa-fw"></i>
+              Frente al costado Norte del Parque de Barva
+            </li>
+            <li>
+              <i class="fa fa-phone fa-fw"></i>
+              <a class="text-decoration-none" href="tel:010-020-0340">+506 8888-8888</a>
+            </li>
+            <li>
+              <i class="fa fa-envelope fa-fw"></i>
+              <a class="text-decoration-none" href="#" onClick="window.open('assets/form/form.html', 'Form', 'top=100, left=400, width=600, height=600, location=no, status=yes, toolbar=no, menubar=no, scrollbars=no, resizable=no')">info@drtech.com</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 pt-5">
+          <h2 class="h2 border-bottom pb-3 border-light">PRODUCTOS</h2>
+          <ul class="list-unstyled footer-link-list">
+            <li><a class="text-decoration-none" href="#">Celulares</a></li>
+            <li><a class="text-decoration-none" href="#">Audífonos</a></li>
+            <li><a class="text-decoration-none" href="#">Estuches</a></li>
+            <li><a class="text-decoration-none" href="#">Computadoras</a></li>
+            <li><a class="text-decoration-none" href="#">Cámaras de Seguridad</a></li>
+            <li><a class="text-decoration-none" href="#">Accesorios</a></li>
+            <li><a class="text-decoration-none" href="#">Audio</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 pt-5">
+          <h2 class="h2 border-bottom pb-3 border-light">INFORMACION ADICIONAL</h2>
+          <ul class="list-unstyled footer-link-list">
+            <li><a class="text-decoration-none" href="#">Inicio</a></li>
+            <li><a class="text-decoration-none" href="#">Acerca de Nosotros</a></li>
+            <li><a class="text-decoration-none" href="https://ul.waze.com/ul?ll=10.02105724%2C-84.12243247&navigate=yes&zoom=17&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location">Ubicación</a></li>
+            <li><a class="text-decoration-none" href="#">Preguntas Frecuentes</a></li>
+            <li><a class="text-decoration-none" href="#">Contacto</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-12 mb-3">
+          <div class="w-100 my-3 border-top border-light"></div>
+        </div>
+        <div class="col-auto me-auto">
+          <ul class="list-inline text-left footer-icons">
+            <li class="list-inline-item border border-light rounded-circle text-center">
+              <a class=" text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+            </li>
+            <li class="list-inline-item border border-light rounded-circle text-center">
+              <a class=" text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+            </li>
+            <li class="list-inline-item border border-light rounded-circle text-center">
+              <a class=" text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
+            </li>
+            <li class="list-inline-item border border-light rounded-circle text-center">
+              <a class=" text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+    <!-- End Footer -->
+	
+  <!-- jQuery libraria incluida -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<!-- Bootstrap 5 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript del carrito -->
+<script src="assets/form/main.js"></script>
+</body>
+</html>
