@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Confirmada - DR TECH</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <!-- Header Simplificado -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a href="index.html"><img src="assets/img/dr_tech_logo.svg" alt="logo" height="40"></a>
+            <div class="navbar-nav ms-auto">
+                <span class="navbar-text">
+                    <i class="fas fa-check-circle text-success me-2"></i>Compra Confirmada
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="text-center mb-5">
+                    <div class="success-icon mb-4">
+                        <i class="fas fa-check-circle fa-5x text-success"></i>
+                    </div>
+                    <h1 class="text-white mb-3">¡Compra Confirmada!</h1>
+                    <p class="text-muted lead">Su pedido ha sido procesado exitosamente</p>
+                </div>
+
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="fas fa-receipt me-2"></i>Detalles del Pedido</h5>
+                    </div>
+                    <div class="card-body" id="detalles-pedido">
+                        <!-- Los detalles se cargarán dinámicamente -->
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-6 mb-3">
+                        <div class="card border-info h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-shipping-fast fa-2x text-info mb-3"></i>
+                                <h6>Tiempo de Entrega</h6>
+                                <p class="text-muted mb-0">1-3 días hábiles</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card border-warning h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-undo fa-2x text-warning mb-3"></i>
+                                <h6>Derecho de Retracto</h6>
+                                <p class="text-muted mb-0">8 días calendario</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    <h6 class="alert-heading"><i class="fas fa-info-circle me-2"></i>Próximos Pasos</h6>
+                    <ul class="mb-0">
+                        <li>Recibirá confirmación por WhatsApp al número proporcionado</li>
+                        <li>Le enviaremos un email con los detalles del pedido</li>
+                        <li>Nuestro equipo se contactará para coordinar la entrega</li>
+                        <li>Puede rastrear su pedido llamando al +506 8888-8888</li>
+                    </ul>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="inventario.html" class="btn btn-primary me-3">
+                        <i class="fas fa-shopping-bag me-2"></i>Seguir Comprando
+                    </a>
+                    <a href="index.html" class="btn btn-outline-secondary">
+                        <i class="fas fa-home me-2"></i>Volver al Inicio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="container-fluid p-5" id="tempaltemo_footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 border-bottom pb-3 border-light logo">DR TECH</h2>
+                    <ul class="list-unstyled footer-link-list">
+                        <li><i class="fas fa-map-marker-alt fa-fw"></i> Frente al costado Norte del Parque de Barva</li>
+                        <li><i class="fa fa-phone fa-fw"></i> <a class="text-decoration-none" href="tel:+506 8888 8888">+506 8888-8888</a></li>
+                        <li><i class="fa fa-envelope fa-fw"></i> <a class="text-decoration-none" href="mailto:info@drtech.com">info@drtech.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 border-bottom pb-3 border-light">SOPORTE</h2>
+                    <ul class="list-unstyled footer-link-list">
+                        <li><a class="text-decoration-none" href="garantias-devoluciones.html">Garantías y Devoluciones</a></li>
+                        <li><a class="text-decoration-none" href="contacto.html">Contacto</a></li>
+                        <li><a class="text-decoration-none" href="#">Rastrear Pedido</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 border-bottom pb-3 border-light">SEGURIDAD</h2>
+                    <ul class="list-unstyled footer-link-list">
+                        <li><i class="fas fa-shield-alt fa-fw"></i> Compra 100% Segura</li>
+                        <li><i class="fas fa-lock fa-fw"></i> Datos Protegidos</li>
+                        <li><i class="fas fa-certificate fa-fw"></i> Garantía DR TECH</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Cargar detalles de la compra desde localStorage
+            const compraData = JSON.parse(localStorage.getItem('compra_rapida_confirmacion') || '{}');
+            
+            if (compraData.producto) {
+                const detallesHtml = `
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="${compraData.producto.imagen}" class="img-fluid rounded" alt="${compraData.producto.nombre}">
+                        </div>
+                        <div class="col-md-8">
+                            <h6>${compraData.producto.nombre}</h6>
+                            <p class="text-muted">${compraData.producto.descripcion}</p>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <strong>Cantidad:</strong> ${compraData.cantidad}
+                                </div>
+                                <div class="col-sm-6">
+                                    <strong>Precio unitario:</strong> ₡${compraData.producto.precio.toLocaleString()}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <strong>Cliente:</strong> ${compraData.cliente.nombre}<br>
+                                    <strong>Teléfono:</strong> ${compraData.cliente.telefono}<br>
+                                    <strong>Email:</strong> ${compraData.cliente.email}
+                                </div>
+                                <div class="col-sm-6">
+                                    <strong>Dirección:</strong><br>
+                                    ${compraData.cliente.direccion}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div>Subtotal: ₡${compraData.totales.subtotal.toLocaleString()}</div>
+                                    <div>IVA (13%): ₡${compraData.totales.iva.toLocaleString()}</div>
+                                    <div>Envío: ₡${compraData.totales.envio.toLocaleString()}</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5 class="text-success"><strong>Total: ₡${compraData.totales.total.toLocaleString()}</strong></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $('#detalles-pedido').html(detallesHtml);
+                
+                // Limpiar localStorage después de mostrar
+                localStorage.removeItem('compra_rapida_confirmacion');
+            } else {
+                $('#detalles-pedido').html('<p class="text-muted">No se encontraron detalles del pedido.</p>');
+            }
+        });
+    </script>
+</body>
+</html>
