@@ -227,7 +227,7 @@
                 provincia: $('#provincia').val(),
                 canton: sanitizeInput($('#canton').val()),
                 distrito: sanitizeInput($('#distrito').val()),
-                direccion: sanitizeInput($('#direccion').val()),
+                direccion: `${$('#provincia').val()}, ${sanitizeInput($('#canton').val())}, ${sanitizeInput($('#distrito').val())}. ${sanitizeInput($('#direccion').val())}`,
                 
                 // Método de pago
                 metodo_pago: $('input[name="metodo_pago"]:checked').val(),
