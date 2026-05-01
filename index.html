@@ -64,7 +64,12 @@
         <a class="nav-link" aria-current="page" href="nosotros.html">Nosotros</a>
         <a class="nav-link" href="computadoras.html">Computadoras</a>
         <a class="nav-link" href="instalacion.html">Instalacion</a>
+        <a class="nav-link" href="garantias-devoluciones.html">Garantías</a>
+        <a class="nav-link" href="politica-privacidad.html">Privacidad</a>
         <a class="nav-link" aria-current="page" href="contacto.html">Contacto</a>
+        <button class="btn btn-outline-primary ms-2" data-bs-toggle="modal" data-bs-target="#carritoModal">
+          <i class="fas fa-shopping-cart"></i> Carrito (<span id="carrito-count">0</span>)
+        </button>
       </div>
     </div>
   </div>
@@ -149,46 +154,115 @@
 	<!-- Close Carrousel -->
 	
 	
-	<!-- esta section contiene los cards-->
+	<!-- Carrito de Compras Modal -->
+	<div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div id="carrito-items"></div>
+					<div class="carrito-resumen mt-4">
+						<div class="row">
+							<div class="col-md-6">
+								<h6>Subtotal: ₡<span id="subtotal">0</span></h6>
+								<h6>IVA (13%): ₡<span id="iva">0</span></h6>
+								<h6>Costo de Envío: ₡<span id="envio">2500</span></h6>
+							</div>
+							<div class="col-md-6">
+								<h5><strong>Total: ₡<span id="total">0</span></strong></h5>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuar Comprando</button>
+					<button type="button" class="btn btn-primary" id="proceder-checkout">Proceder al Checkout</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <section class="container text-center" id="works"> 
-
-    <div class="trabajos">
-      <h2 class="display-3 font-weight-bold p-5 my-5 text-white">SERVICIOS</h2>
+	<!-- esta section contiene los productos de la tienda -->
+  <section class="container text-center" id="products"> 
+    <div class="productos">
+      <h2 class="display-3 font-weight-bold p-5 my-5 text-white">PRODUCTOS</h2>
       <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+        
+        <!-- Producto 1: Audífonos -->
         <div class="col">
-          <div class="card h-100 w-100">
-            <img class="card-img-top" src="assets/img/audifonos.png" alt=""/>
+          <div class="card h-100 w-100 producto-card" data-producto-id="1">
+            <img class="card-img-top" src="assets/img/audifonos.png" alt="Audífonos Bluetooth"/>
             <div class="card-body">
-              <h5 class="card-title">EQUIPO DE COMPUTO<br /></h5>
+              <h5 class="card-title">Audífonos Bluetooth Premium</h5>
               <p class="card-text">
-                Especialistas en tecnología, ofrecemos soluciones garantizadas y soporte de primera.
+                Audífonos inalámbricos con cancelación de ruido y batería de larga duración.
               </p>
+              <div class="precio-container">
+                <h4 class="precio">₡45,000</h4>
+                <p class="precio-sin-iva">Precio sin IVA: ₡39,823</p>
+              </div>
+              <button class="btn btn-primary agregar-carrito" 
+                      data-id="1" 
+                      data-nombre="Audífonos Bluetooth Premium" 
+                      data-precio="45000"
+                      data-imagen="assets/img/audifonos.png">
+                Agregar al Carrito
+              </button>
             </div>
           </div>
         </div>
+
+        <!-- Producto 2: Smartphone -->
         <div class="col">
-          <div class="card h-100 w-100">
-            <img class="card-img-top" src="assets/img/celular.png" alt="" />
+          <div class="card h-100 w-100 producto-card" data-producto-id="2">
+            <img class="card-img-top" src="assets/img/celular.png" alt="Smartphone" />
             <div class="card-body">
-              <h5 class="card-title">MANTENIMIENTO</h5>
+              <h5 class="card-title">Smartphone Android 128GB</h5>
               <p class="card-text">
-                Especialistas en tecnología, ofrecemos soluciones garantizadas y soporte de primera.
+                Teléfono inteligente con cámara de alta resolución y procesador de última generación.
               </p>
+              <div class="precio-container">
+                <h4 class="precio">₡280,000</h4>
+                <p class="precio-sin-iva">Precio sin IVA: ₡247,787</p>
+              </div>
+              <button class="btn btn-primary agregar-carrito" 
+                      data-id="2" 
+                      data-nombre="Smartphone Android 128GB" 
+                      data-precio="280000"
+                      data-imagen="assets/img/celular.png">
+                Agregar al Carrito
+              </button>
             </div>
           </div>
         </div>
+
+        <!-- Producto 3: Laptop -->
         <div class="col">
-          <div class="card h-100 w-100">
-            <img class="card-img-top" src="assets/img/laptop.png" alt="" />
+          <div class="card h-100 w-100 producto-card" data-producto-id="3">
+            <img class="card-img-top" src="assets/img/laptop.png" alt="Laptop Gaming" />
             <div class="card-body">
-              <h5 class="card-title">EQUIPO</h5>
+              <h5 class="card-title">Laptop Gaming 16GB RAM</h5>
               <p class="card-text">
-                Especialistas en tecnología, ofrecemos soluciones garantizadas y soporte de primera.
+                Computadora portátil para gaming con tarjeta gráfica dedicada y SSD de alta velocidad.
               </p>
+              <div class="precio-container">
+                <h4 class="precio">₡850,000</h4>
+                <p class="precio-sin-iva">Precio sin IVA: ₡752,212</p>
+              </div>
+              <button class="btn btn-primary agregar-carrito" 
+                      data-id="3" 
+                      data-nombre="Laptop Gaming 16GB RAM" 
+                      data-precio="850000"
+                      data-imagen="assets/img/laptop.png">
+                Agregar al Carrito
+              </button>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>

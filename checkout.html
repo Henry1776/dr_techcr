@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Seguro - DR TECH</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <!-- Header Simplificado para Checkout -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a href="index.html"><img src="assets/img/dr_tech_logo.svg" alt="logo" height="40"></a>
+            <div class="navbar-nav ms-auto">
+                <span class="navbar-text">
+                    <i class="fas fa-lock text-success me-2"></i>Checkout Seguro
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <div class="row">
+            <!-- Resumen del Pedido -->
+            <div class="col-lg-4 order-lg-2 mb-4">
+                <div class="card border-primary">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-shopping-cart me-2"></i>Resumen del Pedido</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="checkout-items"></div>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <span>Subtotal:</span>
+                            <span>₡<span id="checkout-subtotal">0</span></span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>IVA (13%):</span>
+                            <span>₡<span id="checkout-iva">0</span></span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>Envío:</span>
+                            <span>₡<span id="checkout-envio">2,500</span></span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <strong>Total:</strong>
+                            <strong>₡<span id="checkout-total">0</span></strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificaciones de Seguridad -->
+                <div class="card border-success mt-3">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0"><i class="fas fa-shield-alt me-2"></i>Compra Segura</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <i class="fas fa-lock fa-2x text-success mb-2"></i>
+                                <small class="d-block">SSL 256-bit</small>
+                            </div>
+                            <div class="col-4">
+                                <i class="fas fa-credit-card fa-2x text-success mb-2"></i>
+                                <small class="d-block">PCI-DSS</small>
+                            </div>
+                            <div class="col-4">
+                                <i class="fas fa-shield-virus fa-2x text-success mb-2"></i>
+                                <small class="d-block">Antifraude</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario de Checkout -->
+            <div class="col-lg-8 order-lg-1">
+                <form id="checkout-form" class="needs-validation" novalidate>
+                    
+                    <!-- Información Personal -->
+                    <div class="checkout-step">
+                        <h4><i class="fas fa-user me-2"></i>Información Personal</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nombre" class="form-label">Nombre Completo *</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                <div class="invalid-feedback">Por favor ingrese su nombre completo.</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="cedula" class="form-label">Cédula *</label>
+                                <input type="text" class="form-control" id="cedula" name="cedula" pattern="[0-9]{9}" required>
+                                <div class="invalid-feedback">Ingrese una cédula válida (9 dígitos).</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                                <div class="invalid-feedback">Por favor ingrese un email válido.</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="telefono" class="form-label">Teléfono *</label>
+                                <input type="tel" class="form-control" id="telefono" name="telefono" pattern="[0-9]{8}" required>
+                                <div class="invalid-feedback">Ingrese un teléfono válido (8 dígitos).</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dirección de Envío -->
+                    <div class="checkout-step">
+                        <h4><i class="fas fa-map-marker-alt me-2"></i>Dirección de Envío</h4>
+                        <div class="mb-3">
+                            <label for="provincia" class="form-label">Provincia *</label>
+                            <select class="form-select" id="provincia" name="provincia" required>
+                                <option value="">Seleccione una provincia</option>
+                                <option value="san-jose">San José</option>
+                                <option value="alajuela">Alajuela</option>
+                                <option value="cartago">Cartago</option>
+                                <option value="heredia">Heredia</option>
+                                <option value="guanacaste">Guanacaste</option>
+                                <option value="puntarenas">Puntarenas</option>
+                                <option value="limon">Limón</option>
+                            </select>
+                            <div class="invalid-feedback">Por favor seleccione una provincia.</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="canton" class="form-label">Cantón *</label>
+                                <input type="text" class="form-control" id="canton" name="canton" required>
+                                <div class="invalid-feedback">Por favor ingrese el cantón.</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="distrito" class="form-label">Distrito *</label>
+                                <input type="text" class="form-control" id="distrito" name="distrito" required>
+                                <div class="invalid-feedback">Por favor ingrese el distrito.</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Dirección Exacta *</label>
+                            <textarea class="form-control" id="direccion" name="direccion" rows="3" required placeholder="Incluya referencias como: de la iglesia 200m norte, casa amarilla con portón negro"></textarea>
+                            <div class="invalid-feedback">Por favor proporcione la dirección exacta.</div>
+                        </div>
+                    </div>
+
+                    <!-- Método de Pago -->
+                    <div class="checkout-step">
+                        <h4><i class="fas fa-credit-card me-2"></i>Método de Pago</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="metodo_pago" id="tarjeta" value="tarjeta" checked>
+                                    <label class="form-check-label" for="tarjeta">
+                                        <i class="fas fa-credit-card me-2"></i>Tarjeta de Crédito/Débito
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="metodo_pago" id="sinpe" value="sinpe">
+                                    <label class="form-check-label" for="sinpe">
+                                        <i class="fas fa-mobile-alt me-2"></i>SINPE Móvil
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Información de Tarjeta (se oculta si selecciona SINPE) -->
+                        <div id="tarjeta-info">
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                <strong>Seguridad PCI-DSS:</strong> Sus datos de tarjeta son procesados de forma segura. 
+                                No almacenamos información de tarjetas de crédito en nuestros servidores.
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 mb-3">
+                                    <label for="numero_tarjeta" class="form-label">Número de Tarjeta *</label>
+                                    <input type="text" class="form-control" id="numero_tarjeta" name="numero_tarjeta" 
+                                           placeholder="1234 5678 9012 3456" maxlength="19">
+                                    <div class="invalid-feedback">Por favor ingrese un número de tarjeta válido.</div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="cvv" class="form-label">CVV *</label>
+                                    <input type="text" class="form-control" id="cvv" name="cvv" 
+                                           placeholder="123" maxlength="4">
+                                    <div class="invalid-feedback">CVV requerido.</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="mes_exp" class="form-label">Mes de Expiración *</label>
+                                    <select class="form-select" id="mes_exp" name="mes_exp">
+                                        <option value="">MM</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="ano_exp" class="form-label">Año de Expiración *</label>
+                                    <select class="form-select" id="ano_exp" name="ano_exp">
+                                        <option value="">AAAA</option>
+                                        <option value="2026">2026</option>
+                                        <option value="2027">2027</option>
+                                        <option value="2028">2028</option>
+                                        <option value="2029">2029</option>
+                                        <option value="2030">2030</option>
+                                        <option value="2031">2031</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nombre_tarjeta" class="form-label">Nombre en la Tarjeta *</label>
+                                <input type="text" class="form-control" id="nombre_tarjeta" name="nombre_tarjeta" 
+                                       placeholder="Como aparece en la tarjeta">
+                            </div>
+                        </div>
+
+                        <!-- Información SINPE (se muestra si selecciona SINPE) -->
+                        <div id="sinpe-info" style="display: none;">
+                            <div class="alert alert-success">
+                                <i class="fas fa-mobile-alt me-2"></i>
+                                <strong>SINPE Móvil:</strong> Recibirá las instrucciones de pago por WhatsApp y email.
+                                Su pedido se procesará una vez confirmado el pago.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Términos y Condiciones -->
+                    <div class="checkout-step">
+                        <h4><i class="fas fa-file-contract me-2"></i>Términos y Condiciones</h4>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="acepto_terminos" name="acepto_terminos" required>
+                            <label class="form-check-label" for="acepto_terminos">
+                                Acepto los <a href="garantias-devoluciones.html" target="_blank">términos y condiciones</a> 
+                                y la <a href="politica-privacidad.html" target="_blank">política de privacidad</a> *
+                            </label>
+                            <div class="invalid-feedback">Debe aceptar los términos y condiciones.</div>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="derecho_retracto" name="derecho_retracto" required>
+                            <label class="form-check-label" for="derecho_retracto">
+                                Entiendo mi <strong>derecho de retracto de 8 días</strong> según la Ley 7472 *
+                            </label>
+                            <div class="invalid-feedback">Debe confirmar que entiende su derecho de retracto.</div>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="marketing" name="marketing">
+                            <label class="form-check-label" for="marketing">
+                                Deseo recibir ofertas y promociones por email (opcional)
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Botón de Compra -->
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg" id="btn-finalizar">
+                            <i class="fas fa-lock me-2"></i>Finalizar Compra Segura
+                        </button>
+                        <a href="index.html" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Volver a la Tienda
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Procesamiento -->
+    <div class="modal fade" id="procesandoModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center p-5">
+                    <div class="spinner-border text-primary mb-3" role="status">
+                        <span class="visually-hidden">Procesando...</span>
+                    </div>
+                    <h5>Procesando su pago...</h5>
+                    <p class="text-muted">Por favor no cierre esta ventana</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/checkout.js"></script>
+</body>
+</html>
