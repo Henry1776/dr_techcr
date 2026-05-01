@@ -224,10 +224,10 @@
                 telefono: sanitizeInput($('#telefono').val()),
                 
                 // Dirección
-                provincia: $('#provincia').val(),
-                canton: sanitizeInput($('#canton').val()),
-                distrito: sanitizeInput($('#distrito').val()),
-                direccion: `${$('#provincia').val()}, ${sanitizeInput($('#canton').val())}, ${sanitizeInput($('#distrito').val())}. ${sanitizeInput($('#direccion').val())}`,
+                provincia: $('#provincia option:selected').text(),
+                canton: $('#canton option:selected').text(),
+                distrito: $('#distrito option:selected').text(),
+                direccion: `${$('#provincia option:selected').text()}, ${$('#canton option:selected').text()}, ${$('#distrito option:selected').text()}. ${sanitizeInput($('#direccion').val())}`,
                 
                 // Método de pago
                 metodo_pago: $('input[name="metodo_pago"]:checked').val(),
@@ -319,8 +319,58 @@
         }, 2000);
     }
 
+    function setupLocationDropdowns() {
+        $('#provincia').on('change', function() {
+            const idProvincia = $(this).val();
+            const cantonSelect = $('#canton');
+            const distritoSelect = $('#distrito');
+            
+            cantonSelect.empty().append('<option value="">Cargando cantones...</option>').prop('disabled', true);
+            distritoSelect.empty().append('<option value="">Seleccione primero un cantón</option>').prop('disabled', true);
+            
+            if (!idProvincia) {
+                cantonSelect.empty().append('<option value="">Seleccione primero una provincia</option>');
+                return;
+            }
+            
+            $.getJSON(`https://ubicaciones.paginasweb.cr/provincia/${idProvincia}/cantones.json`, function(data) {
+                cantonSelect.empty().append('<option value="">Seleccione un cantón</option>');
+                $.each(data, function(key, value) {
+                    cantonSelect.append(`<option value="${key}">${value}</option>`);
+                });
+                cantonSelect.prop('disabled', false);
+            }).fail(function() {
+                cantonSelect.empty().append('<option value="">Error al cargar cantones</option>');
+            });
+        });
+
+        $('#canton').on('change', function() {
+            const idProvincia = $('#provincia').val();
+            const idCanton = $(this).val();
+            const distritoSelect = $('#distrito');
+            
+            distritoSelect.empty().append('<option value="">Cargando distritos...</option>').prop('disabled', true);
+            
+            if (!idCanton) {
+                distritoSelect.empty().append('<option value="">Seleccione primero un cantón</option>');
+                return;
+            }
+            
+            $.getJSON(`https://ubicaciones.paginasweb.cr/provincia/${idProvincia}/canton/${idCanton}/distritos.json`, function(data) {
+                distritoSelect.empty().append('<option value="">Seleccione un distrito</option>');
+                $.each(data, function(key, value) {
+                    distritoSelect.append(`<option value="${key}">${value}</option>`);
+                });
+                distritoSelect.prop('disabled', false);
+            }).fail(function() {
+                distritoSelect.empty().append('<option value="">Error al cargar distritos</option>');
+            });
+        });
+    }
+
     // Inicialización
     $(document).ready(function() {
+        setupLocationDropdowns();
         renderCheckoutSummary();
         setupRealTimeValidation();
         setupPaymentMethodToggle();

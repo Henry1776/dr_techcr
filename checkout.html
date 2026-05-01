@@ -124,26 +124,30 @@
                             <label for="provincia" class="form-label">Provincia *</label>
                             <select class="form-select" id="provincia" name="provincia" required>
                                 <option value="">Seleccione una provincia</option>
-                                <option value="san-jose">San José</option>
-                                <option value="alajuela">Alajuela</option>
-                                <option value="cartago">Cartago</option>
-                                <option value="heredia">Heredia</option>
-                                <option value="guanacaste">Guanacaste</option>
-                                <option value="puntarenas">Puntarenas</option>
-                                <option value="limon">Limón</option>
+                                <option value="1">San José</option>
+                                <option value="2">Alajuela</option>
+                                <option value="3">Cartago</option>
+                                <option value="4">Heredia</option>
+                                <option value="5">Guanacaste</option>
+                                <option value="6">Puntarenas</option>
+                                <option value="7">Limón</option>
                             </select>
                             <div class="invalid-feedback">Por favor seleccione una provincia.</div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="canton" class="form-label">Cantón *</label>
-                                <input type="text" class="form-control" id="canton" name="canton" required>
-                                <div class="invalid-feedback">Por favor ingrese el cantón.</div>
+                                <select class="form-select" id="canton" name="canton" required disabled>
+                                    <option value="">Seleccione primero una provincia</option>
+                                </select>
+                                <div class="invalid-feedback">Por favor seleccione un cantón.</div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="distrito" class="form-label">Distrito *</label>
-                                <input type="text" class="form-control" id="distrito" name="distrito" required>
-                                <div class="invalid-feedback">Por favor ingrese el distrito.</div>
+                                <select class="form-select" id="distrito" name="distrito" required disabled>
+                                    <option value="">Seleccione primero un cantón</option>
+                                </select>
+                                <div class="invalid-feedback">Por favor seleccione un distrito.</div>
                             </div>
                         </div>
                         <div class="mb-3">
