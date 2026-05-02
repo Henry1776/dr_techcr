@@ -1,29 +1,42 @@
-name: "Seguridad dr_techcr"
+name: "Seguridad Integral Dr. Tech"
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  schedule:
+    - cron: '0 0 * * 1' # Se ejecuta cada lunes a medianoche
 
 jobs:
   analyze:
-    name: Analizar Código
+    name: Escaneo de Seguridad
     runs-on: ubuntu-latest
     permissions:
-      security-events: write # Permite publicar resultados en la pestaña Security
       actions: read
       contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'javascript' ] # Puedes añadir 'python' o 'go' si agregas otros sitios
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
-        with:
-          languages: 'javascript' # Esto cubre Node.js, Express y JavaScript
+    # Inicializa CodeQL para encontrar vulnerabilidades de código
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: ${{ matrix.language }}
 
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v2
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
       - name: Autobuild
         uses: github/codeql-action/autobuild@v3
 
