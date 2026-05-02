@@ -2,11 +2,9 @@ name: "Seguridad Integral Dr. Tech"
 
 on:
   push:
-    branches: [ "main", "master" ] # Añadí 'master' porque en tu captura se ve que usas esa rama
+    branches: [ "main", "master" ]
   pull_request:
     branches: [ "main", "master" ]
-  schedule:
-    - cron: '0 0 * * 1'
 
 jobs:
   analyze:
@@ -17,11 +15,6 @@ jobs:
       contents: read
       security-events: write
 
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'javascript' ]
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -29,10 +22,11 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
-        languages: ${{ matrix.language }}
+        languages: javascript
 
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
+
