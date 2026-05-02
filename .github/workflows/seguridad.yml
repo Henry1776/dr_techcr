@@ -1,5 +1,31 @@
+name: "Seguridad dr_techcr"
+
 on:
   push:
-    branches: [ "master" ]  # <--- Cambia "main" por "master"
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]  # <--- Cambia "main" por "master"
+    branches: [ "main" ]
+
+jobs:
+  analyze:
+    name: Analizar Código
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write # Permite publicar resultados en la pestaña Security
+      actions: read
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: 'javascript' # Esto cubre Node.js, Express y JavaScript
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
