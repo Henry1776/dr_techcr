@@ -288,10 +288,11 @@
                     orderId: orderId,
                     total: orderData.total,
                     metodo: 'Tarjeta de Crédito',
-                    email: orderData.email
+                    email: orderData.email,
+                    orderData: orderData
                 }));
                 
-                window.location.href = 'confirmacion.html';
+                window.location.href = 'confirmacion-compra.html';
             } else {
                 $('#procesandoModal').modal('hide');
                 alert('Error al procesar el pago. Por favor intente nuevamente.');
@@ -307,15 +308,17 @@
             // Limpiar carrito
             localStorage.removeItem('drtech_carrito');
             
-            // Redirigir a página de instrucciones SINPE
-            localStorage.setItem('sinpe_instructions', JSON.stringify({
+            // Redirigir a página de confirmación
+            localStorage.setItem('order_confirmation', JSON.stringify({
                 orderId: orderId,
                 total: orderData.total,
+                metodo: 'SINPE Móvil',
                 telefono: '8888-8888',
-                email: orderData.email
+                email: orderData.email,
+                orderData: orderData
             }));
             
-            window.location.href = 'sinpe-instrucciones.html';
+            window.location.href = 'confirmacion-compra.html';
         }, 2000);
     }
 

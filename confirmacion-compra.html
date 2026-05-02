@@ -133,9 +133,100 @@
     <script>
         $(document).ready(function () {
             // Cargar detalles de la compra desde localStorage
-            const compraData = JSON.parse(localStorage.getItem('compra_rapida_confirmacion') || '{}');
+            // Primero intentar cargar order_confirmation, si no compra_rapida_confirmacion
+            let compraData = JSON.parse(localStorage.getItem('order_confirmation'));
+            let isOrderData = true;
+            
+            if (!compraData) {
+                compraData = JSON.parse(localStorage.getItem('compra_rapida_confirmacion') || '{}');
+                isOrderData = false;
+            }
 
-            if (compraData.producto) {
+            if (isOrderData && compraData.orderData) {
+                const orderData = compraData.orderData;
+                let itemsHtml = '';
+                
+                if (orderData.items && orderData.items.length > 0) {
+                    orderData.items.forEach(item => {
+                        itemsHtml += `
+                            <div class="row mb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <img src="${item.imagen}" class="img-fluid rounded" style="max-height: 80px;" alt="${item.nombre}">
+                                </div>
+                                <div class="col-md-10">
+                                    <h6>${item.nombre}</h6>
+                                    <div class="row">
+                                        <div class="col-sm-6 text-muted">
+                                            <strong>Cantidad:</strong> ${item.cantidad}
+                                        </div>
+                                        <div class="col-sm-6 text-muted">
+                                            <strong>Precio unitario:</strong> ₡${item.precio.toLocaleString()}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+
+                const detallesHtml = `
+                    <div class="mb-4">
+                        <div class="row bg-light p-3 rounded">
+                            <div class="col-sm-6">
+                                <strong>Número de Orden:</strong> ${compraData.orderId}<br>
+                                <strong>Método de Pago:</strong> ${compraData.metodo}<br>
+                                ${compraData.metodo === 'SINPE Móvil' ? `<strong class="text-danger mt-2 d-block">Instrucciones: Realice el SINPE al número 8888-8888 indicando su número de orden.</strong>` : ''}
+                            </div>
+                            <div class="col-sm-6 text-md-end mt-2 mt-md-0">
+                                <strong>Fecha:</strong> ${new Date(orderData.timestamp || Date.now()).toLocaleDateString('es-CR')}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h6 class="border-bottom pb-2 mb-3">Productos</h6>
+                    ${itemsHtml}
+                    <hr>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <h6 class="border-bottom pb-2">Datos del Cliente</h6>
+                            <strong>Nombre:</strong> ${orderData.nombre}<br>
+                            <strong>Cédula:</strong> ${orderData.cedula}<br>
+                            <strong>Teléfono:</strong> ${orderData.telefono}<br>
+                            <strong>Email:</strong> ${orderData.email}
+                        </div>
+                        <div class="col-sm-6">
+                            <h6 class="border-bottom pb-2">Dirección de Envío</h6>
+                            <p class="mb-0">${orderData.direccion}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-8 text-end">
+                            <div>Subtotal:</div>
+                            <div>IVA (13%):</div>
+                            <div>Envío:</div>
+                        </div>
+                        <div class="col-sm-4 text-end">
+                            <div>₡${orderData.subtotal.toLocaleString()}</div>
+                            <div>₡${orderData.iva.toLocaleString()}</div>
+                            <div>₡${orderData.envio.toLocaleString()}</div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-8 text-end">
+                            <h5 class="mb-0"><strong>Total:</strong></h5>
+                        </div>
+                        <div class="col-sm-4 text-end">
+                            <h5 class="text-success mb-0"><strong>₡${orderData.total.toLocaleString()}</strong></h5>
+                        </div>
+                    </div>
+                `;
+                $('#detalles-pedido').html(detallesHtml);
+
+                // Limpiar localStorage después de mostrar
+                localStorage.removeItem('order_confirmation');
+            } else if (compraData.producto) {
+                // Lógica original (fallback)
                 const detallesHtml = `
                     <div class="row">
                         <div class="col-md-4">
@@ -183,7 +274,7 @@
                 // Limpiar localStorage después de mostrar
                 localStorage.removeItem('compra_rapida_confirmacion');
             } else {
-                $('#detalles-pedido').html('<p class="text-muted">No se encontraron detalles del pedido.</p>');
+                $('#detalles-pedido').html('<div class="alert alert-warning">No se encontraron detalles del pedido. Por favor, vuelva a la tienda o contacte a soporte si cree que esto es un error.</div>');
             }
         });
     </script>
