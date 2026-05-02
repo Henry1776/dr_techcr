@@ -1,1 +1,5 @@
-
+on:
+  push:
+    branches: [ "master" ]  # <--- Cambia "main" por "master"
+  pull_request:
+    branches: [ "master" ]  # <--- Cambia "main" por "master"
