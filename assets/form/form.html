@@ -36,10 +36,10 @@
                                         <input name="name" type="text" class="form-control" placeholder="Nombres" required>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input name="email" type="email" class="form-control" placeholder="E-mail" required>
+                                        <input name="email" type="email" class="form-control" placeholder="E-mail" required autocomplete="off">
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input name="phone" type="text" class="form-control" placeholder="Teléfono" required>
+                                        <input name="phone" type="tel" pattern="[0-9]{8,15}" class="form-control" placeholder="Teléfono" required title="Solo números, entre 8 y 15 dígitos">
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <input name="subject" type="text" class="form-control" placeholder="Asunto" required>
@@ -60,7 +60,7 @@
             </div>
         </div>
     </section>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://jquery.com" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="main.js"></script>
 </body>
 </html>
