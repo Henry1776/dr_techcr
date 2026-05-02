@@ -2,11 +2,11 @@ name: "Seguridad Integral Dr. Tech"
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "master" ] # Añadí 'master' porque en tu captura se ve que usas esa rama
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "master" ]
   schedule:
-    - cron: '0 0 * * 1' # Se ejecuta cada lunes a medianoche
+    - cron: '0 0 * * 1'
 
 jobs:
   analyze:
@@ -20,24 +20,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript' ] # Puedes añadir 'python' o 'go' si agregas otros sitios
+        language: [ 'javascript' ]
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
-    # Inicializa CodeQL para encontrar vulnerabilidades de código
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
+      uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
 
     - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
+      uses: github/codeql-action/autobuild@v3
 
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
